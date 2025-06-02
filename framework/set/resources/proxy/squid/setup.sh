@@ -16,6 +16,25 @@ PORT="3228"
 
 set -e
 
+
+echo "PARAM 1"
+echo ${USER}
+echo "PARAM 2"
+echo ${GROUP}
+echo "PARAM 3"
+echo ${BASTION}
+echo "PARAM 4"
+echo ${PASSWORD}
+echo "PARAM 5"
+echo ${REGISTRY_USER}
+echo "PARAM 6"
+echo ${REGISTRY_PASS}
+echo "PARAM 7"
+echo ${REGISTRY_NAME}
+echo "PARAM 8"
+echo ${K8S_VERSION}
+
+
 echo "Setting up htpasswd..."
 . /etc/os-release
 
@@ -68,8 +87,11 @@ PEM=/home/$USER/keyfile.pem
 sudo chown $USER:$GROUP $PEM
 chmod 600 $PEM
 
+echo "wget 1"
 wget https://github.com/rancher/rke2/releases/download/${K8S_VERSION}%2Brke2r1/rke2.linux-amd64.tar.gz
+echo "wget 2"
 wget https://github.com/rancher/rke2/releases/download/${K8S_VERSION}%2Brke2r1/rke2-images.linux-amd64.tar.zst
+echo "wget 3"
 wget https://github.com/rancher/rke2/releases/download/${K8S_VERSION}%2Brke2r1/sha256sum-amd64.txt
 
 curl -sfL https://get.rke2.io --output install.sh
